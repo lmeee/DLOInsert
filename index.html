@@ -44,9 +44,9 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Sim2Real Manipulation on Unknown Objects with
-            Tactile-based Reinforcement Learning</h1>
-      
+          <h1 class="title is-1 publication-title">
+            Learning for Deformable Linear Object Insertion Leveraging Flexibility
+            Estimation from Visual Cues      
           </div>
         </div>
       </div>
@@ -60,32 +60,29 @@
       <h2 class="title is-2">Abstract</h2>
       <div class="content has-text-justified">
         <p>
-        Using Tactile sensors for manipulation remains as one of the most challenging problems in robotics. 
-        At the heart of these challenges is generalization: How can we train a tactile-based policy that can manipulate unseen and diverse objects? In this paper, we propose to perform Reinforcement Learning with only visual tactile sensing inputs on diverse objects in a physical simulator. 
-        By training with large-scale data in simulation, it enables the policy to generalize to unseen objects. 
-        However, leveraging simulation introduces the Sim2Real transfer problem. To mitigate this problem, we study different tactile representations and evaluate how each affects real-robot manipulation results after transfer.  
-        We conduct our experiments on large-scale real-world objects and show significant improvements over baselines. Interestingly, we find that a particular abstraction of the tactile image leads to better Sim2Real results rather than the full information.
-        </p>
+          Manipulation of deformable Linear objects (DLOs), including iron wire, rubber, silk, and nylon rope, is ubiquitous in daily life.
+          These objects exhibit diverse physical properties, such as Young's modulus and bending stiffness. Such diversity poses challenges for developing generalized manipulation policies.
+          However, previous research limited their scope to single-material DLOs and engaged in time-consuming data collection for the state estimation. 
+          In this paper, we propose a two-stage manipulation approach consisting of a material property (e.g., flexibility) estimation and policy learning for DLO insertion with reinforcement learning. Firstly, we design a flexibility estimation scheme that characterizes the properties of different types of DLOs. The ground truth flexibility data is collected in simulation to train our flexibility estimation module. 
+          During the manipulation, the robot interacts with the DLOs to estimate flexibility by analyzing their visual configurations. 
+          Secondly, we train a policy conditioned on the estimated flexibility to perform challenging DLO insertion tasks.
+          Our pipeline trained with diverse insertion scenarios achieves an 85.6% success rate in simulation and 66.67% in real robot experiments.
+         </p>
       </div>
     </div>
   </div>
 </div>
-</section>
-
-
 
 <section class="section">
 
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-2">Simulation</h2>
+        <h2 class="title is-2">Video</h2>
         <div class="content has-text-justified">
-          <p>
-              We use tactile images to train the reinforcement learning policy for pivoting and insertion tasks.
-              The left-side tactile images in the video depict the <span style="color: #3D85C6">RGB</span>, <span
-                style="color: #9376E0">difference image</span>, and <span style="color: #CC0000">binary image</span> from top to bottom.
-            </p>
+          <video id="generalvideo" controls muted loop playsinline height="100%">
+            <source src="static/videos/finalicra.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
     </div>
@@ -99,7 +96,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h3 class="title is-3">Pivoting</h3>
+        <h3 class="title is-3">Simulation Experiments</h3>
 
         <!-- <p>
             We train dexterous manipulation using RL with single-viewed point cloud. The <span style="color: #3D85C6">blue points</span>
@@ -116,10 +113,8 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h4 class="title is-4">Tactile based Policy</h4>
         <p>
-        
-        The green transparent objects show the desired orientation of objects relative to the gripper's current orientation.
+          The following experiment shows the evaluation result for Ours w/ f for fix theta and random theta.
         </p>
 
      
@@ -133,9 +128,8 @@
     <div class="columns is-centered">
       <div class="column is-one-second">
         <!-- <h3 class="title is-4">Insertion</h3> -->
-        <video id="insertion1" controls muted loop autoplay playsinline height="100%">
-          <source src="static/videos/icranewtitle2.mp4" type="video/mp4">
-        </video>
+        <img src="static/videos/fixobsstat_42000.gif" alt="this slowpoke moves"  width="400" />
+
         <br>
         
 
@@ -144,81 +138,14 @@
       </div>
       <div class="column is-one-second">
 
-        <video id="insertion2" controls muted loop autoplay playsinline height="100%">
-          <source src="video/sim_pivot/mask/58.mp4" type="video/mp4">
-        </video>
+        <img src="static/videos/randobsstat_50000.gif" alt="this slowpoke moves"  width="400" />
+
 
         <br>
        
       </div>
     </div>
 
-
-    <div class="container is-max-fullhd">
-      <div class="columns is-centered">
-
-        <h5 class="button has-text-centered">
-          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
-            aria-controls="collapseOne">
-            More Simulation Visualization
-          </a>
-        </h5>
-      </div>
-
-      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="more-demonstration">
-        <div class="button-body">
-          <br />
-          <div class="columns is-centered">
-            <div class="column is-one-second">
-              <video id="pivoting-5" controls muted loop autoplay playsinline height="100%">
-                <source src="video/sim_pivot/mask/3.mp4" type="video/mp4">
-              </video>
-              <br>
-              <video id="pivoting-6" controls muted loop autoplay playsinline height="100%">
-                <source src="video/sim_pivot/mask/4.mp4" type="video/mp4">
-              </video>
-              <br>
-
-              <video id="pivoting-6" controls muted loop autoplay playsinline height="100%">
-                <source src="video/sim_pivot/mask/45.mp4" type="video/mp4">
-              </video>
-              <br>
-
-                <video id="pivoting-6" controls muted loop autoplay playsinline height="100%">
-                  <source src="video/sim_pivot/mask/50.mp4" type="video/mp4">
-                </video>
-                <br>
-
-
-
-            </div>
-            <div class="column is-one-second">
-              <video id="pivoting-6" controls muted loop autoplay playsinline height="100%">
-                <source src="video/sim_pivot/mask/9.mp4" type="video/mp4">
-              </video>
-              <br>
-              <video id="pivoting-11" controls muted loop autoplay playsinline height="100%">
-                <source src="video/sim_pivot/mask/16.mp4" type="video/mp4">
-              </video>
-              <br>
-
-              <video id="pivoting-6" controls muted loop autoplay playsinline height="100%">
-                <source src="video/sim_pivot/mask/20.mp4" type="video/mp4">
-              </video>
-              <br>
-
-                <video id="pivoting-6" controls muted loop autoplay playsinline height="100%">
-                  <source src="video/sim_pivot/mask/62.mp4" type="video/mp4">
-                </video>
-                <br>
-
-
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
   </div>
 </section>
@@ -256,7 +183,6 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h3 class="title is-4">Tactile Based Policy</h3>
   
         <!-- <p>
             We train dexterous manipulation using RL with single-viewed point cloud. The <span style="color: #3D85C6">blue points</span>
@@ -274,7 +200,7 @@
       <div class="column is-one-second">
         <!-- <h3 class="title is-4">Insertion</h3> -->
         <video id="pivoting-1" controls muted loop autoplay playsinline height="100%">
-          <source src="video/pivoting/rgb/5.mp4" type="video/mp4">
+          <source src="static/videos/fixobs3rope4.mp4" type="video/mp4">
         </video>
         <br>
        
@@ -284,7 +210,16 @@
       </div>
       <div class="column is-one-second">
         <video id="pivoting-3" controls muted loop autoplay playsinline height="100%">
-          <source src="video/pivoting/rgb/17.mp4" type="video/mp4">
+          <source src="static/videos/randobs2_up1.1420_rope5.mp4" type="video/mp4">
+        </video>
+        <br>
+       
+      
+      </div>
+
+      <div class="column is-one-second">
+        <video id="pivoting-3" controls muted loop autoplay playsinline height="100%">
+          <source src="static/videos/randobs2_down1.9778_rope1.mp4" type="video/mp4">
         </video>
         <br>
        
